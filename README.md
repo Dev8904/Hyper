@@ -1,10 +1,4 @@
-# HyprV4
-This is V4 of the Hyprland install script
-
-It contains a collection of dot config files for hyprland with a simple install script.
-IMPORTANT - This script is meant to run on a clean fresh Arch install on physical hardware
-
-You can grab the config files and install packages by hand with the command listed below
+Hyper Setup
 
 Do this ONLY if you need Nvidia support (do this first)
 ```
