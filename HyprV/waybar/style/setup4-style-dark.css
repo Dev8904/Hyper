@@ -9,7 +9,7 @@
 
 window#waybar {
     background: rgba(14, 9, 9, 0);
-    color: #fcf6f6;
+    color: #ce180e;
 }
 
 tooltip {
@@ -27,18 +27,18 @@ tooltip label{
 
 #workspaces button {
     padding: 5px;
-    color: #fcf6f6;
+    color: #f4cdcd;
     margin-right: 5px;
 }
 
 #workspaces button.active {
-    color: #000000;
-    background: #e3e2a1;
+    color: #ce180e;
+    background: #0e090900;
     border-radius: 10px;
 }
 
 #workspaces button:hover {
-    background: #1b1111;
+    background: #0e090900;
     color: #f4cdcd;
     border-radius: 10px;
 }
