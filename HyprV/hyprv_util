@@ -1,0 +1,148 @@
+#!/bin/bash
+. ~/.config/HyprV/hyprv.conf
+
+get_theme() {
+    # Check which waybar theme is set
+    THEMEIS=$(readlink -f ~/.config/waybar/style.css | cut -d '-' -f3)
+
+    #if the theme is not dark then we need to switch to it
+    if [[ $THEMEIS == "dark.css" ]]; then
+        SWITCHTO="-dark"
+        MODESTR="Dark"
+    else
+        SWITCHTO=""
+        MODESTR="Light"
+    fi
+}
+
+update_theme() {
+    #set the xfce and GTK theme
+    if [[ $SETUP == "setup4" || $SETUPTO == "setup4-" ]]; then
+        xfconf-query -c xsettings -p /Net/IconThemeName -s "Papirus-Dark"
+        gsettings set org.gnome.desktop.interface icon-theme "Papirus-Dark"
+    else 
+        xfconf-query -c xsettings -p /Net/IconThemeName -s "Adwaita$SWITCHTO"
+        gsettings set org.gnome.desktop.interface icon-theme "Adwaita$SWITCHTO"
+    fi
+
+    xfconf-query -c xsettings -p /Net/ThemeName -s "Adwaita$SWITCHTO"
+    gsettings set org.gnome.desktop.interface gtk-theme "Adwaita$SWITCHTO"
+}
+
+get_setup() {
+    SETUP=$(readlink -f ~/.config/waybar/config.jsonc | cut -d '-' -f1 | cut -d '/' -f8)
+}
+
+restart_waybar() {
+    #restart the waybar
+    pkill waybar
+    waybar & 
+
+    get_setup   
+
+    if [[ $SETUP == "setup4" ]]; then
+        waybar --config ~/.config/HyprV/waybar/conf/setup4-config-bottom.jsonc
+    fi
+
+}
+
+set_current_background() {
+    get_theme
+    get_setup
+    
+    if [[ ! -z "$SET_BG" ]]; then
+        #set the current background
+        if [[ $THEMEIS == "dark.css" ]]; then
+            swww img ~/.config/HyprV/backgrounds/$SETUP'-background-dark.jpg'
+        else
+            swww img ~/.config/HyprV/backgrounds/$SETUP'-background.jpg'
+        fi
+    else
+        swww img $SET_BG
+    fi
+}
+
+switch_setup() {
+    get_theme
+    get_setup
+    case $SETUP in
+        setup1)
+            #we are on setup1 so switch to setup2
+            SETUPTO="setup2-"
+            notify-send -h string:x-canonical-private-synchronous:sys-notify -u low "switching to HyprSetUp2"
+        ;;
+        
+        setup2)
+            #we are on setup2 so switch to setup3
+            SETUPTO="setup3-"
+            notify-send -h string:x-canonical-private-synchronous:sys-notify -u low "switching to HyprSetUp3"
+        ;;
+
+        setup3)
+            #we are on setup3 so switch to setup4
+            SETUPTO="setup4-"
+            notify-send -h string:x-canonical-private-synchronous:sys-notify -u low "switching to HyprSetUp4"
+        ;;
+
+        setup4)
+            #we are on setup4 so switch to setup1
+            SETUPTO="setup1-"
+            notify-send -h string:x-canonical-private-synchronous:sys-notify -u low "switching to HyprSetUp1"
+        ;;
+        
+    esac
+    #set the waybar config
+    ln -sf ~/.config/HyprV/waybar/conf/$SETUPTO'config.jsonc' ~/.config/waybar/config.jsonc
+    #set the waybar theme
+    ln -sf ~/.config/HyprV/waybar/style/$SETUPTO'style'$SWITCHTO.css ~/.config/waybar/style.css
+    #set the wofi theme
+    ln -sf ~/.config/HyprV/wofi/style/$SETUPTO'style'$SWITCHTO.css ~/.config/wofi/style.css
+
+    #set the background
+    if [ -z $SET_BG ]; then
+        swww img ~/.config/HyprV/backgrounds/$SETUPTO'background'$SWITCHTO.jpg --transition-fps 60 --transition-type wipe --transition-duration 2
+    else
+        swww img $SET_BG --transition-fps 60 --transition-type wipe --transition-duration 2
+    fi
+
+    #update the sddm image
+    cp -f ~/.config/HyprV/backgrounds/$SETUPTO'background'$SWITCHTO.jpg /usr/share/sddm/themes/sdt/wallpaper.jpg
+
+}
+
+switch_keyboard() {
+    hyprctl switchxkblayout $SET_KB next
+}
+
+if [[ "$1" == "setupswitch" ]]; then
+    switch_setup
+    update_theme
+    restart_waybar
+elif [[ "$1" == "setbg" ]]; then
+    set_current_background
+    update_theme
+    restart_waybar
+elif [[ "$1" == "swkb" ]]; then
+    switch_keyboard
+    restart_waybar
+fi
+
+# need to show the setup and tooltip
+get_setup
+
+TOOLTIP='Default Keybinds\n'\
+'SUPER + T = Start Kitty\n'\
+'SUPER + Q = Close Window\n'\
+'SUPER + L = Lock Screen\n'\
+'SUPER + M = Logout menu\n'\
+'SUPER + E = File Manager\n'\
+'SUPER + V = Toggle Float\n'\
+'SUPER + SPACE = App Launcher\n'\
+'SUPER + S = Screenshot\n'\
+'SUPER + F = FullScreen\n'\
+'SUPER + MouseClick = Drag Window\n'\
+'SUPER + V = Toggle Floating\n'\
+'ALT + V = Open clipboard manager'\
+
+
+echo '{"text": "'$SETUP'", "tooltip": "'$TOOLTIP'"}'
