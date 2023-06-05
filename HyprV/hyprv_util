@@ -105,9 +105,9 @@ switch_setup() {
         swww img $SET_BG --transition-fps 60 --transition-type wipe --transition-duration 2
     fi
 
-    #update the sddm image
-    cp -f ~/.config/HyprV/backgrounds/$SETUPTO'background'$SWITCHTO.jpg /usr/share/sddm/themes/sdt/wallpaper.jpg
-
+    #update the lightdm image
+    cp -f ~/.config/HyprV/backgrounds/$SETUPTO'background'$SWITCHTO.jpg /etc/lightdm/backgrounds/wallpaper.jpg
+    
 }
 
 switch_keyboard() {

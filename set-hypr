@@ -51,7 +51,6 @@ install_stage=(
     thunar 
     btop
     firefox
-    thunderbird
     mpv
     pamixer 
     pavucontrol 
@@ -63,14 +62,18 @@ install_stage=(
     gvfs 
     thunar-archive-plugin 
     file-roller
-    starship 
-    papirus-icon-theme 
+    starship  
     ttf-jetbrains-mono-nerd 
     noto-fonts-emoji 
     lxappearance 
     xfce4-settings
     nwg-look-bin
-    sddm-git 
+    lightdm
+    lightdm-slick-greeter
+    gtk-theme-material-black
+    sweet-cursors-theme-git
+    beautyline
+    we10x-icon-theme-git
 )
 
 for str in ${myArray[@]}; do
@@ -125,8 +128,7 @@ install_software() {
 clear
 
 # set some expectations for the user
-echo -e "$CNT - You are about to execute a script that would attempt to setup Hyprland.
-Please note that Hyprland is still in Beta."
+echo -e "$CNT - You are about to execute a set up script that will attempt to setup Hyprland."
 sleep 1
 
 # attempt to discover if this is a VM or not
@@ -231,7 +233,7 @@ if [[ $INST == "Y" || $INST == "y" ]]; then
     fi
 
     # Install the correct hyprland version
-    echo -e "$CNT - Installing Hyprland, this may take a while..."
+    echo -e "$CNT - Installing Hy, this may take a while..."
     if [[ "$ISNVIDIA" == true ]]; then
         #check for hyprland and remove it so the -nvidia package can be installed
         if yay -Q hyprland &>> /dev/null ; then
@@ -256,9 +258,9 @@ if [[ $INST == "Y" || $INST == "y" ]]; then
     sudo systemctl enable --now bluetooth.service &>> $INSTLOG
     sleep 2
 
-    # Enable the sddm login manager service
-    echo -e "$CNT - Enabling the SDDM Service..."
-    sudo systemctl enable sddm &>> $INSTLOG
+    # Enable the lightdm login manager service
+    echo -e "$CNT - Enabling the LightDM Service..."
+    sudo systemctl enable lightdm &>> $INSTLOG
     sleep 2
     
     # Clean out other portals
@@ -319,12 +321,10 @@ if [[ $CFG == "Y" || $CFG == "y" ]]; then
         echo -e "\nsource = ~/.config/hypr/env_var_nvidia.conf" >> ~/.config/hypr/hyprland.conf
     fi
 
-    # Copy the SDDM theme
+    # Copy the LightDM config
     echo -e "$CNT - Setting up the login screen."
-    sudo cp -R Extras/sdt /usr/share/sddm/themes/
-    sudo chown -R $USER:$USER /usr/share/sddm/themes/sdt
-    sudo mkdir /etc/sddm.conf.d
-    echo -e "[Theme]\nCurrent=sdt" | sudo tee -a /etc/sddm.conf.d/10-theme.conf &>> $INSTLOG
+    sudo cp -R Extras/ldm /etc/lightdm/
+    sudo chown -R $USER:$USER /etc/lightdm
     WLDIR=/usr/share/wayland-sessions
     if [ -d "$WLDIR" ]; then
         echo -e "$COK - $WLDIR found"
@@ -337,11 +337,11 @@ if [[ $CFG == "Y" || $CFG == "y" ]]; then
     sudo cp Extras/hyprland.desktop /usr/share/wayland-sessions/
 
     # setup the first look and feel as dark
-    xfconf-query -c xsettings -p /Net/ThemeName -s "Adwaita-dark"
-    xfconf-query -c xsettings -p /Net/IconThemeName -s "Papirus-Dark"
-    gsettings set org.gnome.desktop.interface gtk-theme "Adwaita-dark"
-    gsettings set org.gnome.desktop.interface icon-theme "Papirus-Dark"
-    cp -f ~/.config/HyprV/backgrounds/setup4-background-dark.jpg /usr/share/sddm/themes/sdt/wallpaper.jpg
+    xfconf-query -c xsettings -p /Net/ThemeName -s "Material-Black-Cherry-3.36"
+    xfconf-query -c xsettings -p /Net/IconThemeName -s "Material-Black-Cherry-Suru-GLOW"
+    gsettings set org.gnome.desktop.interface gtk-theme "Material-Black-Cherry-3.36"
+    gsettings set org.gnome.desktop.interface icon-theme "Material-Black-Cherry-Suru-GLOW"
+    cp -f ~/.config/HyprV/backgrounds/setup4-background-dark.jpg /etc/lightdm/backgrounds/wallpaper.jpg
 fi
 
 ### Install the starship shell ###
