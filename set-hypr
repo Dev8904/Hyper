@@ -74,6 +74,7 @@ install_stage=(
     sweet-cursors-theme-git
     beautyline
     we10x-icon-theme-git
+    orchis-theme-git
 )
 
 for str in ${myArray[@]}; do
