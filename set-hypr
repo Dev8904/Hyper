@@ -326,7 +326,7 @@ if [[ $CFG == "Y" || $CFG == "y" ]]; then
 
     # Copy the LightDM config
     echo -e "$CNT - Setting up the login screen."
-    sudo cp -R Extras/ldm /etc/lightdm/
+    sudo cp -R Extras/ldm* /etc/lightdm/
     sudo chown -R $USER:$USER /etc/lightdm
     WLDIR=/usr/share/wayland-sessions
     if [ -d "$WLDIR" ]; then
