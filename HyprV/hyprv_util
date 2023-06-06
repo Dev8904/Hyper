@@ -208,13 +208,14 @@ fi
 get_setup
 
 TOOLTIP='Default Keybinds\n'\
-'SUPER + T = Start Kitty\n'\
+'SUPER + W = Start Firefox\n'\
+'SUPER + T = Start Terminal\n'\
 'SUPER + Q = Close Window\n'\
 'SUPER + L = Lock Screen\n'\
-'SUPER + M = Logout menu\n'\
+'SUPER + X = Logout menu\n'\
 'SUPER + E = File Manager\n'\
 'SUPER + V = Toggle Float\n'\
-'SUPER + SPACE = App Launcher\n'\
+'SUPER + D = App Launcher\n'\
 'SUPER + S = Screenshot\n'\
 'SUPER + F = FullScreen\n'\
 'SUPER + MouseClick = Drag Window\n'\

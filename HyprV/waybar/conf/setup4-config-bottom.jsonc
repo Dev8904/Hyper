@@ -9,9 +9,9 @@
     "modules-left": [
         "custom/launch_wofi",
         "custom/launch_firefox",
-        "custom/launch_thunderbird",
-        "custom/launch_kitty",
-        "custom/launch_thunar"
+        "custom/launch_discord",
+        "custom/launch_vscodium",
+        "custom/launch_mintstick",
     ],
     "modules-center": ["wlr/taskbar"],
     "modules-right": ["custom/weather"],
@@ -26,21 +26,21 @@
         "tooltip": false
     },
 
-    "custom/launch_thunderbird": {
-        "format": "󰇰",
-        "on-click": "thunderbird",
+    "custom/launch_discord": {
+        "format": "",
+        "on-click": "exec discord",
         "tooltip": false
     },
 
-    "custom/launch_thunar": {
-        "format": "",
-        "on-click": "exec thunar",
+    "custom/launch_mintstick": {
+        "format": "",
+        "on-click": "exec mintstick -m iso",
         "tooltip": false
     },
 
-    "custom/launch_kitty": {
-        "format": "",
-        "on-click": "exec kitty",
+    "custom/launch_vscodium": {
+        "format": "",
+        "on-click": "exec vscodium",
         "tooltip": false
     },
     

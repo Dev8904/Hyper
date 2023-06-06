@@ -12,6 +12,7 @@
         "cpu",
         "memory",
         "disk",
+        "temperature",
         "hyprland/window"
     ],
     "modules-center": [
@@ -21,7 +22,9 @@
         "custom/power_btn"
     ],
     "modules-right": [
-        "temperature",
+
+        "network",
+        "bluetooth",
         "custom/power_profile",
         "battery",
         "backlight",
@@ -68,6 +71,25 @@
         "on-click": "kitty --start-as=fullscreen --title btop sh -c 'btop'"
     },
 
+     "network": {
+        // "interface": "wlp2*", // (Optional) To force the use of this interface
+        "format-wifi": "  {signalStrength}%",
+        "format-ethernet": "{ipaddr}/{cidr}",
+        "tooltip-format": "{essid} - {ifname} via {gwaddr}",
+        "format-linked": "{ifname} (No IP)",
+        "format-disconnected": "Disconnected ⚠",
+        "format-alt": "{ifname}:{essid} {ipaddr}/{cidr}"
+    },
+
+        "bluetooth": {
+        "format": " {status}",
+        "format-disabled": "", // an empty format will hide the module
+        "format-connected": " {num_connections}",
+        "tooltip-format": "{device_alias}",
+        "tooltip-format-connected": " {device_enumerate}",
+        "tooltip-format-enumerate-connected": "{device_alias}"
+    },
+
     "disk": {
         "interval": 30,
         "format": "󰋊 {percentage_used}%",
@@ -99,16 +121,16 @@
         "all-outputs": true,
         "on-click": "activate",
         "persistent_workspaces": {
-            "1": [],
-            "2": [],
-            "3": [],
-            "4": [],
-            "5": [],
-            "6": [],
-            "7": [],
-            "8": [],
-            "9": [],
-            "10": []
+            "I": [],
+            "II": [],
+            "II": [],
+            "III": [],
+            "IV": [],
+            "V": [],
+            "VI": [],
+            "VII": [],
+            "VIII": [],
+            "IX": []
         }
     },
 

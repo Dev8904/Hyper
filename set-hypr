@@ -24,6 +24,7 @@ prep_stage=(
     cliphist 
     python-requests 
     pacman-contrib
+    mintstick-git
 )
 
 #software for nvidia GPU only
@@ -75,6 +76,7 @@ install_stage=(
     beautyline
     we10x-icon-theme-git
     orchis-theme-git
+    otf-font-awesomel
 )
 
 for str in ${myArray[@]}; do
@@ -333,6 +335,10 @@ if [[ $CFG == "Y" || $CFG == "y" ]]; then
         echo -e "$CWR - $WLDIR NOT found, creating..."
         sudo mkdir $WLDIR
     fi 
+
+    #Copy the fastfetch config
+    echo -e "$CNT - Setting up the fastfetch."
+    sudo cp -R Extras/fastfetch /etc/fastfetch/
     
     # stage the .desktop file
     sudo cp Extras/hyprland.desktop /usr/share/wayland-sessions/
