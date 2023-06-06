@@ -5,7 +5,7 @@
         "return-type" : "json",
         "interval": 30,
         "format": "{}",
-        "on-click": "~/.config/HyprV/hyprv_util vswitch",
+        "on-click": "~/.config/HyprV/hyprv_util setupswitch",
         "tooltip": true
     },
 
