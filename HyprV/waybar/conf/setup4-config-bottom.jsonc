@@ -5,14 +5,8 @@
     "exclusive": true,
     "passthrough": false,
     "gtk-layer-shell": true,
-    "height": 25,
-    "modules-left": [
-        "custom/launch_wofi",
-        "custom/launch_firefox",
-        "custom/launch_discord",
-        "custom/launch_vscodium",
-        "custom/launch_mintstick",
-    ],
+    "height": 15,
+    "modules-left": ["custom/launch_wofi"],
     "modules-center": ["wlr/taskbar"],
     "modules-right": ["custom/weather"],
 
@@ -52,7 +46,7 @@
 
     "wlr/taskbar": {
         "format": "{icon}",
-        "icon-size": 24,
+        "icon-size": 15,
         "all-outputs": true,
         "tooltip-format": "{name} - {title}",
         "on-click": "activate",

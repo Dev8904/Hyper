@@ -5,7 +5,7 @@
     "exclusive": true,
     "passthrough": false,
     "gtk-layer-shell": true,
-    "height": 20,
+    "height": 15,
     "modules-left": [
         "custom/launch_wofi",
         "custom/power_btn",
@@ -14,6 +14,7 @@
         "wlr/taskbar"
     ],
     "modules-right": [
+        "tray",
         "cpu",
         "memory",
         "disk",
@@ -25,7 +26,6 @@
         "pulseaudio",
         "pulseaudio#microphone",
         "backlight",
-        "tray",
         "custom/weather",
         "custom/updates",
         "clock",
@@ -78,7 +78,7 @@
 
     "wlr/taskbar": {
         "format": "{icon}{name}",
-        "icon-size": 16,
+        "icon-size": 10,
         "all-outputs": true,
         "tooltip-format": "{title}",
         "on-click": "activate",
@@ -87,7 +87,7 @@
             "wofi"
          ],
 	    "app_ids-mapping": {
-	        "steam_app_39210": "Final Fantasy 14"
+	        "steam_app_39210": "Dead By Daylight"
 	    }
     },
 
@@ -177,11 +177,12 @@
         "format-alt": "{icon} {percent}%",
         "format-icons": ["󰃞", "󰃟", "󰃠"],
         "on-scroll-up": "~/.config/HyprV/waybar/scripts/brightness --inc",
-        "on-scroll-down": "~/.config/HyprV/waybar/scripts/brightness --dec"
+        "on-scroll-down": "~/.config/HyprV/waybar/scripts/brightness --dec",
+        "tooltip": false
     },
 
     "tray": {
-        "icon-size": 16,
+        "icon-size": 15,
         "spacing": 10
     },
 

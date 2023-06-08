@@ -5,14 +5,13 @@
     "exclusive": true,
     "passthrough": false,
     "gtk-layer-shell": true,
-    "height": 50,
+    "height": 15,
     "modules-left": [
         "custom/launch_wofi",
         "wlr/workspaces",
         "cpu",
         "memory",
         "disk",
-        "temperature",
         "hyprland/window"
     ],
     "modules-center": [
@@ -23,6 +22,7 @@
     ],
     "modules-right": [
 
+        "temperature",
         "network",
         "bluetooth",
         "custom/power_profile",
@@ -123,19 +123,19 @@
         "persistent_workspaces": {
             "I": [],
             "II": [],
-            "II": [],
             "III": [],
             "IV": [],
             "V": [],
             "VI": [],
             "VII": [],
             "VIII": [],
-            "IX": []
+            "IX": [],
+            "X": []
         }
     },
 
     "tray": {
-        "icon-size": 18,
+        "icon-size": 15,
         "spacing": 10
     },
 

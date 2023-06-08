@@ -5,7 +5,7 @@
     "exclusive": true,
     "passthrough": false,
     "gtk-layer-shell": true,
-    "height": 50,
+    "height": 15,
     "modules-left": [
         "clock",
         "custom/weather",
@@ -21,7 +21,6 @@
         "backlight",
         "pulseaudio",
         "pulseaudio#microphone",
-        "tray",
         "custom/myhyprv",
         "custom/light_dark"
     ],
@@ -43,19 +42,19 @@
         "persistent_workspaces": {
             "I": [],
             "II": [],
-            "II": [],
             "III": [],
             "IV": [],
             "V": [],
             "VI": [],
             "VII": [],
             "VIII": [],
-            "IX": []
+            "IX": [],
+            "X": []
         }
     },
 
     "tray": {
-        "icon-size": 18,
+        "icon-size": 15,
         "spacing": 10
     },
 

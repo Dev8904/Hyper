@@ -47,25 +47,25 @@ if [[ $SWITCHTO == "-dark" ]]; then #check for light theme
             gsettings set org.gnome.desktop.interface icon-theme "BeautyLine"
             xfconf-query -c xsettings -p /Net/ThemeName -s "Orchis-Purple-Dark" #theme switcher
             gsettings set org.gnome.desktop.interface gtk-theme "Orchis-Purple-Dark"
-            gsettings set org.gnome.desktop.interface cursor-theme "Sweet-cursors"
+            gsettings set org.gnome.desktop.interface cursor-theme "capitaine-cursors"
         elif [[ $SETUP == "setup2" ]]; then
             xfconf-query -c xsettings -p /Net/IconThemeName -s "BeautyLine"
             gsettings set org.gnome.desktop.interface icon-theme "BeautyLine"
             xfconf-query -c xsettings -p /Net/ThemeName -s "Material-Black-Plum-3.36"
             gsettings set org.gnome.desktop.interface gtk-theme "Material-Black-Plum-3.36"
-            gsettings set org.gnome.desktop.interface cursor-theme "Breeze"
+            gsettings set org.gnome.desktop.interface cursor-theme "capitaine-cursors"
         elif [[ $SETUP == "setup3" ]]; then
             xfconf-query -c xsettings -p /Net/IconThemeName -s "Material-Black-Blueberry-Suru-GLOW"
             gsettings set org.gnome.desktop.interface icon-theme "Material-Black-Blueberry-Suru-GLOW"
             xfconf-query -c xsettings -p /Net/ThemeName -s "Material-Black-Blueberry-3.36"
             gsettings set org.gnome.desktop.interface gtk-theme "Material-Black-Blueberry-3.36"
-            gsettings set org.gnome.desktop.interface cursor-theme "Breeze"
+            gsettings set org.gnome.desktop.interface cursor-theme "capitaine-cursors"
         elif [[ $SETUP == "setup4" ]]; then
             xfconf-query -c xsettings -p /Net/IconThemeName -s "Material-Black-Cherry-Suru-GLOW" #icon theme
             gsettings set org.gnome.desktop.interface icon-theme "Material-Black-Cherry-Suru-GLOW"
             xfconf-query -c xsettings -p /Net/ThemeName -s "Material-Black-Cherry-3.36" #theme switcher
             gsettings set org.gnome.desktop.interface gtk-theme "Material-Black-Cherry-3.36"
-            gsettings set org.gnome.desktop.interface cursor-theme "Sweet-cursors"
+            gsettings set org.gnome.desktop.interface cursor-theme "capitaine-cursors"
     fi
 fi
 
@@ -105,25 +105,25 @@ if [[ $SWITCHTO == "-light" ]]; then #check for light theme
         gsettings set org.gnome.desktop.interface icon-theme "BeautyLine"
         xfconf-query -c xsettings -p /Net/ThemeName -s "Orchis-Pink"
         gsettings set org.gnome.desktop.interface gtk-theme "Orchis-Pink"
-        gsettings set org.gnome.desktop.interface cursor-theme "Breeze Light"
+        gsettings set org.gnome.desktop.interface cursor-theme "capitaine-cursors-light"
     elif [[ $SETUP == "setup2" ]]; then
         xfconf-query -c xsettings -p /Net/IconThemeName -s "BeautyLine"
         gsettings set org.gnome.desktop.interface icon-theme "BeautyLine"
         xfconf-query -c xsettings -p /Net/ThemeName -s "Orchis-Purple"
         gsettings set org.gnome.desktop.interface gtk-theme "Orchis-Purple"
-        gsettings set org.gnome.desktop.interface cursor-theme "Breeze Light"
+        gsettings set org.gnome.desktop.interface cursor-theme "capitaine-cursors-light"
     elif [[ $SETUP == "setup3" ]]; then
         xfconf-query -c xsettings -p /Net/IconThemeName -s "We10X-special"
         gsettings set org.gnome.desktop.interface icon-theme "We10X-special"
         xfconf-query -c xsettings -p /Net/ThemeName -s "Orchis"
         gsettings set org.gnome.desktop.interface gtk-theme "Orchis"
-        gsettings set org.gnome.desktop.interface cursor-theme "Breeze Light"
+        gsettings set org.gnome.desktop.interface cursor-theme "capitaine-cursors-light"
     elif [[ $SETUP == "setup4" ]]; then
         xfconf-query -c xsettings -p /Net/IconThemeName -s "We10X-red" #icon theme
         gsettings set org.gnome.desktop.interface icon-theme "We10X-red"
         xfconf-query -c xsettings -p /Net/ThemeName -s "Orchis-Red-Light" #theme switcher
         gsettings set org.gnome.desktop.interface gtk-theme "Orchis-Red-Light"
-        gsettings set org.gnome.desktop.interface cursor-theme "Breeze Light"
+        gsettings set org.gnome.desktop.interface cursor-theme "capitaine-cursors-light"
     fi
 fi
 

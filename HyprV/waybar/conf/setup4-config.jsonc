@@ -5,7 +5,7 @@
     "exclusive": true,
     "passthrough": false,
     "gtk-layer-shell": true,
-    "height": 20,
+    "height": 15,
     "modules-left": [
         "custom/power_btn",
         "custom/lock_screen",
@@ -24,7 +24,6 @@
         "pulseaudio",
         "pulseaudio#microphone",
         "backlight",
-        "tray",
         "temperature",
         "custom/power_profile",
         "battery",
@@ -74,14 +73,14 @@
         "persistent_workspaces": {
             "I": [],
             "II": [],
-            "II": [],
             "III": [],
             "IV": [],
             "V": [],
             "VI": [],
             "VII": [],
             "VIII": [],
-            "IX": []
+            "IX": [],
+            "X": []
         }
     },
 
@@ -172,7 +171,7 @@
     },
 
     "tray": {
-        "icon-size": 16,
+        "icon-size": 15,
         "spacing": 10
     },
 
