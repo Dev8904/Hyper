@@ -19,12 +19,10 @@ prep_stage=(
     pipewire 
     wireplumber 
     jq 
-    gcc12 
     wl-clipboard 
     cliphist 
     python-requests 
     pacman-contrib
-    mintstick-git
 )
 
 #software for nvidia GPU only
@@ -40,7 +38,7 @@ nvidia_stage=(
 install_stage=(
     kitty 
     mako 
-    waybar-hyprland 
+    waybar
     swww 
     swaylock-effects 
     wofi 
@@ -77,6 +75,8 @@ install_stage=(
     we10x-icon-theme-git
     orchis-theme-git
     otf-font-awesome
+    mintstick-git
+    fastfetch
 )
 
 for str in ${myArray[@]}; do
@@ -246,9 +246,6 @@ if [[ $INST == "Y" || $INST == "y" ]]; then
     else
         install_software hyprland
     fi
-
-    #fix needed for waybar-hyprland
-    export CC=gcc-12 CXX=g++-12
 
     # Stage 1 - main components
     echo -e "$CNT - Installing main components, this may take a while..."
