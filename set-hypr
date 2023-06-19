@@ -230,6 +230,13 @@ if [[ $INST == "Y" || $INST == "y" ]]; then
         done
     
         # update config
+        device=$1
+        strings_found=`dd bs=512 count=1 if=${device} 2>/dev/null | strings`
+        if [[ ${strings_found} == *"GRUB"* ]]; then
+        nvidia_drm.modeset=1
+        else #systemd
+        echo -e "nvidia_drm.modeset=1" | sudo tee -a /boot/loader/entries/arch.conf
+        fi
         sudo sed -i 's/MODULES=()/MODULES=(nvidia nvidia_modeset nvidia_uvm nvidia_drm)/' /etc/mkinitcpio.conf
         sudo mkinitcpio --config /etc/mkinitcpio.conf --generate /boot/initramfs-custom.img
         echo -e "options nvidia-drm modeset=1" | sudo tee -a /etc/modprobe.d/nvidia.conf &>> $INSTLOG
