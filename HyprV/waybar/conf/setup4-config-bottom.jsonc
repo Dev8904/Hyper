@@ -22,19 +22,19 @@
 
     "custom/launch_discord": {
         "format": "",
-        "on-click": "exec discord",
+        "on-click": "discord",
         "tooltip": false
     },
 
     "custom/launch_mintstick": {
         "format": "",
-        "on-click": "exec mintstick -m iso",
+        "on-click": "mintstick -m iso",
         "tooltip": false
     },
 
     "custom/launch_vscodium": {
         "format": "",
-        "on-click": "exec vscodium",
+        "on-click": "vscodium",
         "tooltip": false
     },
     
