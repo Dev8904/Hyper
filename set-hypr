@@ -1,4 +1,5 @@
 #!/bin/bash
+#set 
 
 # The follwoing will attempt to install all needed packages to run Hyprland
 # This is a quick and dirty script there are some error checking
@@ -230,9 +231,7 @@ if [[ $INST == "Y" || $INST == "y" ]]; then
         done
     
         # update config
-        device=$1
-        strings_found=`dd bs=512 count=1 if=${device} 2>/dev/null | strings`
-        if [[ ${strings_found} == *"GRUB"* ]]; then
+      if [ -f /boot/grub/grub.cfg]; then
         sudo sed -i "s|\GRUB_CMDLINE_LINUX_DEFAULT=.*|GRUB_CMDLINE_LINUX_DEFAULT=\"nvidia_drm.modeset=1\"|" /etc/default/grub
         sudo grub-mkconfig -o /boot/grub/grub.cfg &>>$INSTLOG
         else #systemd
